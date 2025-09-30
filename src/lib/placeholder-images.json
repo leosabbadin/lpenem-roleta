@@ -1,0 +1,16 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero-background",
+      "description": "Uma estudante determinada sentada em uma mesa, focada em escrever em um caderno, com um laptop por perto.",
+      "imageUrl": "https://raw.githubusercontent.com/leosabbadin/imagem/be89c499e56aa865613ec69e7605505a02cf1052/Sem%20nome%20(1080%20x%201920%20px)%20(1920%20x%201080%20px)%20(1).png",
+      "imageHint": "student writing"
+    },
+    {
+      "id": "hero-background-mobile",
+      "description": "Uma estudante determinada em pé, segurando livros, com um fundo de biblioteca.",
+      "imageUrl": "https://raw.githubusercontent.com/leosabbadin/imagem/a45ce0460d35808edaae4f89326010fd73f39739/Sem%20nome%20(1080%20x%201920%20px)%20(3).png",
+      "imageHint": "student standing"
+    }
+  ]
+}
