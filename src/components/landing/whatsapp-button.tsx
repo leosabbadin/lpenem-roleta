@@ -21,7 +21,7 @@ function WhatsAppIcon(props: SVGProps<SVGSVGElement>) {
 
 export function WhatsAppButton() {
   // Substitua 'SEUNUMERO' pelo seu número de WhatsApp com código do país. Ex: 5511999999999
-  const whatsappNumber = '5511999999999';
+  const whatsappNumber = '5562996105483';
   const whatsappMessage = encodeURIComponent(
     'Olá! Tenho interesse no método Hackeando a Redação do ENEM.'
   );
