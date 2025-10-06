@@ -28,8 +28,8 @@ export function InvestmentSection() {
               <span>Presente Especial</span>
             </div>
             <p className="text-center text-white/90">
-              Gire a roleta da sorte e ganhe até <b>80% de desconto</b> no valor
-              abaixo!
+              Gire a roleta e ganhe até 80% de desconto no valor abaixo. A sorte
+              está lançada!
             </p>
           </div>
 
@@ -45,7 +45,7 @@ export function InvestmentSection() {
             className="font-headline text-[56px] font-extrabold tracking-tight sm:text-[72px] md:text-[88px]"
             style={{ textShadow: '0 10px 30px rgba(252, 211, 77, 0.4)' }}
           >
-            <Highlight>R$ 24,99</Highlight>
+            <Highlight>R$ ??,??</Highlight>
           </div>
           <div className="-mt-2 text-white/80">
             à vista no pix ou cartão
