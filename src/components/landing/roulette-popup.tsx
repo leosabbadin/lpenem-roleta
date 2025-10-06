@@ -88,7 +88,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
       <DialogContent className="max-w-md border-primary/50 bg-[#1a1338] text-white">
         <DialogHeader>
           <DialogTitle className="text-center font-headline text-2xl text-amber-300">
-            {showResult ? 'Parabéns!' : 'Gire a Roleta da Sorte!'}
+            {showResult ? 'Desconto Desbloqueado!' : 'Gire a Roleta da Sorte!'}
           </DialogTitle>
           <DialogDescription className="text-center text-white/80">
             {showResult
@@ -166,11 +166,11 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             </>
           ) : (
             <div className="relative h-64 w-64 rounded-full border-4 border-green-400 bg-green-900/20 flex flex-col items-center justify-center p-4 text-center shadow-[0_0_30px_rgba(74,222,128,0.6)]">
-               <TicketPercent className="mx-auto h-16 w-16 text-green-400" />
-               <p className="mt-2 text-base font-bold text-white">
+               <TicketPercent className="mx-auto h-12 w-12 text-green-400" />
+               <p className="mt-2 text-sm font-bold text-white">
                  🎉 Parabéns! Você conseguiu o desconto máximo de 72%!
                </p>
-               <p className="mt-1 text-sm text-white/80">
+               <p className="mt-1 text-xs text-white/80">
                  Sua sorte garantiu o melhor preço disponível hoje.
                </p>
            </div>
