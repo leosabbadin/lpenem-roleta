@@ -170,7 +170,7 @@
       transform: rotate(0deg);
     }
     to {
-      transform: rotate(var(--final-rotation, 3712.5deg));
+      transform: rotate(var(--final-rotation));
     }
   }
 }

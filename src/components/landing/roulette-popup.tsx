@@ -20,14 +20,14 @@ type RoulettePopupProps = {
 };
 
 const prizes = [
-  { text: '10% OFF' },
-  { text: 'Tente de Novo' },
-  { text: '30% OFF' },
-  { text: 'Mentoria' },
-  { text: '50% OFF' },
-  { text: '72% OFF' }, // Winning prize
-  { text: '20% OFF' },
-  { text: 'E-book Grátis' },
+  { text: '10% OFF', color: 'bg-purple-700' },
+  { text: 'Tente de Novo', color: 'bg-purple-800' },
+  { text: '30% OFF', color: 'bg-purple-700' },
+  { text: 'Mentoria', color: 'bg-purple-800' },
+  { text: '50% OFF', color: 'bg-purple-700' },
+  { text: '72% OFF', color: 'bg-green-600' }, // Winning prize
+  { text: '20% OFF', color: 'bg-purple-700' },
+  { text: 'E-book Grátis', color: 'bg-purple-800' },
 ];
 
 const WINNING_INDEX = 5; // Index of '72% OFF'
@@ -79,24 +79,24 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
         <div className="relative my-8 flex items-center justify-center">
           {/* Pointer */}
           <div
-            className="absolute -top-3 z-10 h-0 w-0"
+            className="absolute -top-4 z-10 h-0 w-0"
             style={{
-              borderLeft: '10px solid transparent',
-              borderRight: '10px solid transparent',
-              borderTop: '16px solid #ef4444',
+              borderLeft: '12px solid transparent',
+              borderRight: '12px solid transparent',
+              borderTop: '20px solid #ef4444',
             }}
           />
 
           <div
             className={cn(
-              'relative h-56 w-56 rounded-full border-4 border-amber-300 transition-transform duration-[4000ms] ease-[cubic-bezier(.1,.6,.3,1)]',
-              'shadow-[0_0_25px_rgba(255,193,77,0.5)]',
+              'relative h-64 w-64 rounded-full border-4 border-amber-400 overflow-hidden transition-transform duration-[4000ms] ease-[cubic-bezier(.1,.6,.3,1)]',
+              'shadow-[0_0_30px_rgba(252,211,77,0.6)]',
               isSpinning && 'animate-[spin_4s_cubic-bezier(.1,.6,.3,1)_forwards]'
             )}
             style={
               {
-                // Custom property for the animation end state
-                '--final-rotation': '3712.5deg',
+                // Custom property for the animation end state. 360 * 10 rounds + final position
+                '--final-rotation': `${360 * 10 - 360 / prizes.length * WINNING_INDEX - 360 / prizes.length / 2}deg`,
               } as React.CSSProperties
             }
           >
@@ -111,12 +111,9 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 >
                   <div
                     className={cn(
-                      'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-2',
-                      i % 2 === 0
-                        ? 'bg-gradient-to-b from-purple-500 to-purple-700'
-                        : 'bg-gradient-to-b from-purple-700 to-purple-900',
-                      i === WINNING_INDEX && '!from-green-500 !to-green-700',
-                      'border-r border-amber-400/30'
+                      'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-3',
+                      prize.color,
+                      'border-r border-amber-400/50'
                     )}
                     style={{
                       clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
@@ -124,9 +121,9 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                     }}
                   >
                     <span
-                      className="block -translate-y-px text-xs font-bold text-white"
+                      className="block text-sm font-bold text-white"
                       style={{
-                        transform: `rotate(${angle / 2}deg) translateY(-0.2rem)`,
+                        transform: `rotate(${angle / 2}deg) translateY(-0.3rem)`,
                       }}
                     >
                       {prize.text}
@@ -135,7 +132,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 </div>
               );
             })}
-            <div className="absolute inset-[10px] rounded-full border-4 border-amber-300 bg-[#1a1338]" />
+             <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full border-4 border-amber-400 bg-[#1a1338] shadow-inner" />
           </div>
         </div>
 
