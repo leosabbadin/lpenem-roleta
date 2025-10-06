@@ -1,7 +1,7 @@
 
 'use client';
 
-import { CircleDollarSign, Flame, Gift, TicketPercent } from 'lucide-react';
+import { CircleDollarSign, Flame, Gift } from 'lucide-react';
 import { CtaButton } from './cta-button';
 import { Highlight } from './highlight';
 import { SectionTitle } from './section-title';
@@ -28,7 +28,7 @@ export function InvestmentSection() {
               <span>Presente Especial</span>
             </div>
             <p className="text-center text-white/90">
-              Gire a roleta e ganhe até 80% de desconto no valor abaixo. A sorte
+              Gire a roleta e ganhe 80% de desconto no valor abaixo. A sorte
               está lançada!
             </p>
           </div>
@@ -56,7 +56,7 @@ export function InvestmentSection() {
 
           <div className="mt-8 flex justify-center">
             <CtaButton asButton onClick={() => setIsPopupOpen(true)}>
-              <TicketPercent /> Descubra seu desconto
+              🎰 GIRAR E REVELAR MEU DESCONTO
             </CtaButton>
           </div>
         </div>
