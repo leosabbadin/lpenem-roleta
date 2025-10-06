@@ -41,8 +41,9 @@ export function InvestmentSection() {
             <span>Presente Especial</span>
           </div>
           <p className="text-center text-white/90">
-            Gire a roleta e ganhe até 80% de desconto no valor abaixo. A sorte
-            está lançada!
+            Um presente para você: 50% OFF garantido! <br />
+            Quer tentar um presente ainda melhor? Gire a roleta e descubra seu
+            prêmio final!
           </p>
         </div>
 
