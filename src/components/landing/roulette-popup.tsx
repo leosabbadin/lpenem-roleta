@@ -25,7 +25,7 @@ const prizes = [
   { text: '30% OFF', color: 'bg-purple-700' },
   { text: 'Mentoria', color: 'bg-purple-800' },
   { text: '50% OFF', color: 'bg-purple-700' },
-  { text: '72% OFF', color: 'bg-purple-700' }, // This will be the winning prize
+  { text: '72% OFF', color: 'bg-purple-800' }, // This will be the winning prize
   { text: '20% OFF', color: 'bg-purple-700' },
   { text: 'E-book Grátis', color: 'bg-purple-800' },
 ];
