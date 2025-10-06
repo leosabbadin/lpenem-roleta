@@ -1,6 +1,6 @@
 'use client';
 
-import { CircleDollarSign, Flame, Gift } from 'lucide-react';
+import { CircleDollarSign, Flame, Gift, TicketPercent } from 'lucide-react';
 import { CtaButton } from './cta-button';
 import { Highlight } from './highlight';
 import { SectionTitle } from './section-title';
@@ -55,7 +55,7 @@ export function InvestmentSection() {
 
           <div className="mt-8 flex justify-center">
             <CtaButton asButton onClick={() => setIsPopupOpen(true)}>
-              <Flame /> Quero minha Redação Nota 1000 agora
+              <TicketPercent /> Descubra seu desconto
             </CtaButton>
           </div>
         </div>
