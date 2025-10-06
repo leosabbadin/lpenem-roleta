@@ -91,11 +91,12 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             className={cn(
               'relative h-56 w-56 rounded-full border-4 border-amber-300 transition-transform duration-[4000ms] ease-[cubic-bezier(.1,.6,.3,1)]',
               'shadow-[0_0_25px_rgba(255,193,77,0.5)]',
-              isSpinning && 'animate-spin'
+              isSpinning && 'animate-[spin_4s_cubic-bezier(.1,.6,.3,1)_forwards]'
             )}
             style={{
-              animationName: isSpinning ? 'spin' : 'none',
-            }}
+              // Custom property for the animation end state
+              '--final-rotation': '3712.5deg',
+            } as React.CSSProperties}
           >
             {prizes.map((prize, i) => {
               const angle = 360 / prizes.length;
@@ -103,26 +104,30 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
               return (
                 <div
                   key={i}
-                  className="absolute left-1/2 top-0 h-1/2 w-1/2 origin-bottom-left"
+                  className="absolute left-0 top-0 h-full w-full"
                   style={{ transform: `rotate(${rotation}deg)` }}
                 >
                   <div
                     className={cn(
-                      'flex h-full w-full items-start justify-center pt-3 text-center text-xs font-bold text-white',
-                      i === WINNING_INDEX ? 'bg-green-500/80' : 'bg-purple-500/80',
-                      i % 2 === 0 && 'bg-purple-700/80',
-                      i === WINNING_INDEX && '!bg-green-500',
-                      'skew-x-[45deg]'
+                      'absolute left-1/2 top-0 h-1/2 w-1/2 origin-bottom-left flex items-start justify-center pt-2',
+                      'bg-clip-text text-transparent', // Makes text have background gradient
+                      i % 2 === 0
+                        ? 'bg-gradient-to-b from-purple-500 to-purple-700'
+                        : 'bg-gradient-to-b from-purple-700 to-purple-900',
+                      i === WINNING_INDEX && '!from-green-500 !to-green-700',
+                      'border-r border-amber-400/30'
                     )}
                     style={{
-                      clipPath: 'polygon(0 0, 100% 0, 100% 100%, 50% 100%)', // Creates the triangle slice
-                      transformOrigin: 'bottom left',
-                      transform: 'skewX(-45deg) scale(1.01)',
+                      clipPath:
+                        'polygon(50% 100%, 0 0, 100% 0)', // Creates the triangle slice
+                      transform: 'translateX(-50%)',
                     }}
                   >
                     <span
-                      className="block"
-                      style={{ transform: `skewX(45deg) rotate(${angle/2}deg) translateY(-0.25rem)` }}
+                      className="block text-white text-xs font-bold"
+                      style={{
+                        transform: `rotate(${angle / 2}deg) translateY(-0.2rem)`,
+                      }}
                     >
                       {prize.text}
                     </span>
@@ -130,6 +135,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 </div>
               );
             })}
+             <div className="absolute inset-[10px] rounded-full bg-[#1a1338] border-4 border-amber-300" />
           </div>
         </div>
 
