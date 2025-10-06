@@ -1,8 +1,26 @@
 import type { ReactNode } from 'react';
+import { cn } from '@/lib/utils';
 
-export function Highlight({ children }: { children: ReactNode }) {
+export function Highlight({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  const isInvestmentHighlight =
+    typeof children === 'string' && children.includes('R$');
+
   return (
-    <span className="animated-text-gradient font-bold">
+    <span
+      className={cn(
+        'font-bold',
+        isInvestmentHighlight
+          ? 'text-amber-300'
+          : 'animated-text-gradient',
+        className
+      )}
+    >
       {children}
     </span>
   );

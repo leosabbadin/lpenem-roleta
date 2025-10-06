@@ -42,7 +42,7 @@ export function InvestmentSection() {
 
           <div
             className="font-headline text-[56px] font-extrabold tracking-tight sm:text-[72px] md:text-[88px]"
-            style={{ textShadow: '0 10px 30px rgba(255,230,105,.25)' }}
+            style={{ textShadow: '0 10px 30px rgba(252, 211, 77, 0.4)' }}
           >
             <Highlight>R$ 24,99</Highlight>
           </div>
