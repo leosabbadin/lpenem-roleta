@@ -25,7 +25,7 @@ const prizes = [
   { text: '30% OFF', color: 'bg-purple-700' },
   { text: 'Mentoria', color: 'bg-purple-800' },
   { text: '50% OFF', color: 'bg-purple-700' },
-  { text: '72% OFF', color: 'bg-purple-800' }, // Winning prize
+  { text: '72% OFF', color: 'bg-purple-800' },
   { text: '20% OFF', color: 'bg-purple-700' },
   { text: 'E-book Grátis', color: 'bg-purple-800' },
 ];
@@ -141,7 +141,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             <>
               <p className="font-bold">
                 Preço Original:{' '}
-                <span className="line-through">R$ 109,90</span>
+                <span className="line-through">R$ 89,90</span>
               </p>
               <Button
                 onClick={handleSpin}
@@ -161,7 +161,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 Parabéns! Você ganhou {prizes[WINNING_INDEX].text}!
               </h3>
               <p className="mt-2 text-lg">
-                De <span className="line-through">R$ 109,90</span> por apenas
+                De <span className="line-through">R$ 89,90</span> por apenas
               </p>
               <p className="font-headline text-5xl font-extrabold text-amber-300">
                 R$ 24,99

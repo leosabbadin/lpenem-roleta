@@ -1,6 +1,6 @@
 'use client';
 
-import { CircleDollarSign, Flame } from 'lucide-react';
+import { CircleDollarSign, Flame, Gift } from 'lucide-react';
 import { CtaButton } from './cta-button';
 import { Highlight } from './highlight';
 import { SectionTitle } from './section-title';
@@ -21,19 +21,23 @@ export function InvestmentSection() {
               <CircleDollarSign className="size-8 text-primary" /> Investimento
             </div>
           </SectionTitle>
-          <p className="mt-2 text-center text-white/80 md:text-lg">
-            Você poderia pagar caro em cursinhos presenciais e não teria metade
-            disso.
-            <br />
-            Mas hoje, você garante o próximo passo da sua aprovação por:
-          </p>
+          <div className="mt-8 flex flex-col items-center gap-2 rounded-2xl border border-amber-400/50 bg-amber-400/10 p-4">
+            <div className="flex items-center gap-2 font-bold text-amber-300">
+              <Gift className="size-5" />
+              <span>Gatilho Especial</span>
+            </div>
+            <p className="text-center text-white/90">
+              Gire a roleta da sorte e ganhe até <b>80% de desconto</b> no valor
+              abaixo!
+            </p>
+          </div>
 
           <p className="mt-8 text-xl text-white/70">
             De{' '}
             <span className="font-bold text-red-400 line-through">
-              R$ 109,90
+              R$ 89,90
             </span>{' '}
-            por
+            por até
           </p>
 
           <div
