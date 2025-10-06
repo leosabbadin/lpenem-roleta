@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState, useRef } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -19,14 +19,14 @@ type RoulettePopupProps = {
 };
 
 const prizes = [
-  '10% OFF',
-  'Tente de Novo',
-  '30% OFF',
-  'Mentoria',
-  '50% OFF',
-  '72% OFF',
-  '20% OFF',
-  'E-book Grátis',
+  { text: '10% OFF', color: 'bg-amber-400' },
+  { text: 'Tente de Novo', color: 'bg-purple-500' },
+  { text: '30% OFF', color: 'bg-amber-400' },
+  { text: 'Mentoria', color: 'bg-purple-500' },
+  { text: '50% OFF', color: 'bg-amber-400' },
+  { text: '72% OFF', color: 'bg-green-500' }, // Winning prize
+  { text: '20% OFF', color: 'bg-amber-400' },
+  { text: 'E-book Grátis', color: 'bg-purple-500' },
 ];
 
 const WINNING_INDEX = 5; // Index of '72% OFF'
@@ -34,14 +34,22 @@ const WINNING_INDEX = 5; // Index of '72% OFF'
 export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
   const [isSpinning, setIsSpinning] = useState(false);
   const [showResult, setShowResult] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const checkoutUrl =
     'https://pay.kirvano.com/a321493b-b7f4-4bc1-aee7-76ddd61e2c85';
 
   const handleSpin = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+    }
     setIsSpinning(true);
     setTimeout(() => {
       setIsSpinning(false);
       setShowResult(true);
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
     }, 4000); // Duration of the spin animation
   };
 
@@ -57,7 +65,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
 
   return (
     <Dialog open={open} onOpenChange={resetState}>
-      <DialogContent className="max-w-md bg-[#1a1338] border-primary/50 text-white">
+      <DialogContent className="max-w-md bg-[#1a1338] border-primary/50 text-white overflow-hidden">
         <DialogHeader>
           <DialogTitle className="text-2xl font-headline text-center text-amber-300">
             Gire a Roleta da Sorte!
@@ -68,13 +76,16 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
         </DialogHeader>
 
         <div className="relative my-8 flex items-center justify-center">
+          {/* Pointer */}
           <div
-            className={cn(
-              'absolute top-1/2 -translate-y-1/2 -right-2 z-10 h-0 w-0 border-y-8 border-y-transparent border-l-[16px] border-l-red-500',
-              '[transform-origin:0_50%]'
-            )}
-            style={{ transform: 'translateY(-50%)' }}
-          ></div>
+            className="absolute -top-4 z-20 h-0 w-0"
+            style={{
+              borderLeft: '12px solid transparent',
+              borderRight: '12px solid transparent',
+              borderTop: '20px solid #ef4444',
+            }}
+          />
+
           <div
             className={cn(
               'relative h-64 w-64 rounded-full border-4 border-amber-300 transition-transform duration-[4000ms] ease-[cubic-bezier(.1,.6,.3,1)]',
@@ -85,46 +96,37 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             }}
           >
             {prizes.map((prize, i) => {
-              const angle = (360 / prizes.length) * i;
+              const angle = 360 / prizes.length;
+              const rotation = angle * i;
               return (
                 <div
                   key={i}
-                  className="absolute left-0 top-0 h-full w-full"
-                  style={{ transform: `rotate(${angle}deg)` }}
+                  className={cn(
+                    'absolute left-0 top-0 h-full w-full origin-center',
+                    '[clip-path:polygon(50%_50%,100%_0,100%_100%)]'
+                  )}
+                  style={{ transform: `rotate(${rotation}deg)` }}
                 >
                   <div
                     className={cn(
-                      'absolute left-1/2 top-0 h-1/2 w-1/2 -ml-1/2 origin-bottom-left border-r-2 border-dashed border-primary/30',
-                      '[clip-path:polygon(50%_0%,100%_100%,0%_100%)]'
+                      'absolute flex h-full w-full items-center justify-center',
+                      prize.color
                     )}
-                    style={{ transform: `rotate(${360 / prizes.length / 2}deg)` }}
+                    style={{ transform: `rotate(${angle / 2}deg)` }}
                   >
-                    <div
-                      className="absolute left-1/2 top-0 h-full w-full origin-bottom-left p-2 text-center"
-                      style={{
-                        transform: `translateX(-50%) rotate(${
-                          360 / prizes.length
-                        }deg)`,
-                      }}
+                    <span
+                      className="block -rotate-90 text-center text-xs font-bold text-white"
+                      style={{ transform: `translateY(-4.5rem) rotate(${-(angle / 2)-90}deg)`}}
                     >
-                      <span
-                        className="block -rotate-45 text-xs font-bold"
-                        style={{
-                          transform: `translateY(1.5rem) rotate(-${
-                            360 / prizes.length / 2 + 90
-                          }deg)`,
-                        }}
-                      >
-                        {prize}
-                      </span>
-                    </div>
+                      {prize.text}
+                    </span>
                   </div>
                 </div>
               );
             })}
-          </div>
-          <div className="absolute flex h-16 w-16 items-center justify-center rounded-full border-4 border-amber-400 bg-[#1a1338] text-sm font-bold">
-            GIRAR
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-16 w-16 items-center justify-center rounded-full border-4 border-amber-400 bg-[#1a1338] text-sm font-bold shadow-inner">
+               GIRAR
+             </div>
           </div>
         </div>
 
@@ -150,7 +152,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             <div className="animate-in fade-in-50 duration-500">
               <TicketPercent className="mx-auto mb-2 h-12 w-12 text-green-400" />
               <h3 className="text-2xl font-bold text-green-400">
-                Parabéns! Você ganhou 72% OFF!
+                Parabéns! Você ganhou {prizes[WINNING_INDEX].text}!
               </h3>
               <p className="mt-2 text-lg">
                 De <span className="line-through">R$ 109,90</span> por apenas
@@ -165,6 +167,11 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             </div>
           )}
         </div>
+        <audio
+          ref={audioRef}
+          src="https://firebasestorage.googleapis.com/v0/b/genkit-llm-hackathon.appspot.com/o/roulette-spin.mp3?alt=media&token=c41d6f51-2483-4a37-b952-054523e1c6d8"
+          preload="auto"
+        />
       </DialogContent>
     </Dialog>
   );
