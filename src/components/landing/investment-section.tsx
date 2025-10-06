@@ -53,13 +53,13 @@ export function InvestmentSection() {
         </p>
 
         <div
-          className="font-headline text-[56px] font-extrabold tracking-tight sm:text-[72px] md:text-[88px]"
+          className="font-headline text-[60px] font-extrabold tracking-tight sm:text-[72px] md:text-[88px]"
           style={{ textShadow: '0 10px 30px rgba(252, 211, 77, 0.4)' }}
         >
-          <Highlight>45,00</Highlight>
+          <Highlight>R$ 45,00</Highlight>
         </div>
         
-        <div className="mt-4 rounded-lg bg-pink-600/50 px-4 py-3 text-sm font-bold shadow-lg">
+        <div className="mt-4 rounded-lg bg-pink-600/20 px-4 py-3 text-sm font-bold shadow-lg">
           <p className="font-bold">🎯 GIRE A ROLETA E ARRISQUE-SE A GANHAR MAIS DESCONTO!</p>
           <p className="text-xs font-normal">Pode chegar até 90% OFF</p>
         </div>
