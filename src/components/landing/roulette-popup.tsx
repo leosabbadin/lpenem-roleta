@@ -98,7 +98,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
         </DialogHeader>
 
         <div className="relative my-4 flex h-64 items-center justify-center sm:my-8">
-          {!showResult && (
+          {!showResult ? (
             <>
               {/* Pointer */}
               <div
@@ -164,15 +164,13 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                  <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full border-4 border-amber-400 bg-[#1a1338] shadow-inner" />
               </div>
             </>
-          )}
-
-          {showResult && (
-             <div className="flex h-full w-full flex-col items-center justify-center p-4 text-center">
-             <TicketPercent className="mx-auto h-12 w-12 text-green-400 sm:h-10 sm:w-10" />
-               <p className="mt-2 text-lg font-bold text-white sm:text-base">
+          ) : (
+            <div className="relative h-64 w-64 rounded-full border-4 border-green-400 bg-green-900/20 flex flex-col items-center justify-center p-4 text-center shadow-[0_0_30px_rgba(74,222,128,0.6)]">
+               <TicketPercent className="mx-auto h-16 w-16 text-green-400" />
+               <p className="mt-2 text-base font-bold text-white">
                  🎉 Parabéns! Você conseguiu o desconto máximo de 72%!
                </p>
-               <p className="mt-1 text-sm text-white/80 sm:text-xs">
+               <p className="mt-1 text-sm text-white/80">
                  Sua sorte garantiu o melhor preço disponível hoje.
                </p>
            </div>
