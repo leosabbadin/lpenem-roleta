@@ -41,12 +41,12 @@ export function InvestmentSection() {
             <span>Presente Especial</span>
           </div>
           <p className="text-center text-white/90">
-            Gire a roleta e ganhe até 72% de desconto no valor abaixo. A sorte
+            Gire a roleta e ganhe até 80% de desconto no valor abaixo. A sorte
             está lançada!
           </p>
         </div>
 
-        <p className="mt-6 text-xl text-white/70">
+        <p className="mt-4 text-xl text-white/70">
           De{' '}
           <span className="font-bold text-red-400 line-through">R$ 89,90</span>{' '}
           por
@@ -61,7 +61,7 @@ export function InvestmentSection() {
         <div className="-mt-3 text-white/80">
           (Clique abaixo para revelar seu preço)
         </div>
-        <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-pink-600/85 px-4 py-1.5 text-sm font-bold shadow-lg">
+        <div className="mt-2 inline-flex items-center gap-2 rounded-full bg-pink-600/85 px-4 py-1.5 text-sm font-bold shadow-lg">
           <Flame className="size-4" /> OFERTA DE LANÇAMENTO
         </div>
 
