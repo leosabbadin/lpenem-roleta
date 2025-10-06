@@ -116,7 +116,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 >
                   <div
                     className={cn(
-                      'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-4 text-center',
+                      'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-6 text-center text-sm font-bold',
                       prizeColor,
                       'border-r border-amber-400/50'
                     )}
@@ -124,8 +124,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                       clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
                       transform: 'translateX(-50%)',
                     }}
-                  >
-                  </div>
+                  ></div>
                 </div>
               );
             })}
@@ -152,7 +151,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
               </Button>
             </>
           ) : (
-            <div className="animate-in fade-in-50 duration-500">
+            <div className="animate-in fade-in-50 duration-500 text-center">
               <TicketPercent className="mx-auto mb-2 h-12 w-12 text-green-400" />
               <h3 className="text-2xl font-bold text-green-400">
                 🎉 Parabéns! Você conseguiu o desconto máximo de 72%!
