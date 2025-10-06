@@ -76,60 +76,69 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="relative my-8 flex items-center justify-center">
-          {/* Pointer */}
-          <div
-            className="absolute -top-4 z-10 h-0 w-0"
-            style={{
-              borderLeft: '12px solid transparent',
-              borderRight: '12px solid transparent',
-              borderTop: '20px solid #ef4444',
-            }}
-          />
+        <div className="relative my-4 flex items-center justify-center sm:my-8">
+          {!showResult ? (
+            <>
+              {/* Pointer */}
+              <div
+                className="absolute -top-4 z-10 h-0 w-0"
+                style={{
+                  borderLeft: '12px solid transparent',
+                  borderRight: '12px solid transparent',
+                  borderTop: '20px solid #ef4444',
+                }}
+              />
 
-          <div
-            className={cn(
-              'relative h-64 w-64 rounded-full border-4 border-amber-400 overflow-hidden transition-transform duration-[4000ms] ease-[cubic-bezier(.1,.6,.3,1)]',
-              'shadow-[0_0_30px_rgba(252,211,77,0.6)]',
-              isSpinning && 'animate-[spin_4s_cubic-bezier(.1,.6,.3,1)_forwards]'
-            )}
-            style={
-              {
-                '--final-rotation': `${
-                  360 * 10 -
-                  (360 / prizes.length) * WINNING_INDEX -
-                  360 / prizes.length / 2
-                }deg`,
-              } as React.CSSProperties
-            }
-          >
-            {prizes.map((prize, i) => {
-              const angle = 360 / prizes.length;
-              const rotation = angle * i;
-              const prizeColor = prize.color;
+              <div
+                className={cn(
+                  'relative h-64 w-64 rounded-full border-4 border-amber-400 overflow-hidden transition-transform duration-[4000ms] ease-[cubic-bezier(.1,.6,.3,1)]',
+                  'shadow-[0_0_30px_rgba(252,211,77,0.6)]',
+                  isSpinning &&
+                    'animate-[spin_4s_cubic-bezier(.1,.6,.3,1)_forwards]'
+                )}
+                style={
+                  {
+                    '--final-rotation': `${
+                      360 * 10 -
+                      (360 / prizes.length) * WINNING_INDEX -
+                      360 / prizes.length / 2
+                    }deg`,
+                  } as React.CSSProperties
+                }
+              >
+                {prizes.map((prize, i) => {
+                  const angle = 360 / prizes.length;
+                  const rotation = angle * i;
+                  const textRotation = -90 + angle / 2;
 
-              return (
-                <div
-                  key={i}
-                  className="absolute left-0 top-0 h-full w-full"
-                  style={{ transform: `rotate(${rotation}deg)` }}
-                >
-                  <div
-                    className={cn(
-                      'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-6 text-center text-sm font-bold',
-                      prizeColor,
-                      'border-r border-amber-400/50'
-                    )}
-                    style={{
-                      clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
-                      transform: 'translateX(-50%)',
-                    }}
-                  ></div>
-                </div>
-              );
-            })}
-            <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full border-4 border-amber-400 bg-[#1a1338] shadow-inner" />
-          </div>
+                  return (
+                    <div
+                      key={i}
+                      className="absolute left-0 top-0 h-full w-full"
+                      style={{ transform: `rotate(${rotation}deg)` }}
+                    >
+                      <div
+                        className={cn(
+                          'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-2 text-center text-xs font-bold',
+                          prize.color,
+                          'border-r border-amber-400/50'
+                        )}
+                        style={{
+                          clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
+                          transform: 'translateX(-50%)',
+                        }}
+                      >
+                         <span style={{ transform: `rotate(${textRotation}deg)` }} className="inline-block whitespace-nowrap">
+                          {prize.text}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+                <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full border-4 border-amber-400 bg-[#1a1338] shadow-inner" />
+              </div>
+            </>
+          ) : null}
         </div>
 
         <div className="text-center">
@@ -151,23 +160,23 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
               </Button>
             </>
           ) : (
-            <div className="animate-in fade-in-50 duration-500 text-center">
-              <TicketPercent className="mx-auto mb-2 h-6 w-6 text-green-400" />
-              <h3 className="text-sm font-bold text-green-400 sm:text-base">
+            <div className="animate-in fade-in-50 duration-500 text-center -mt-4 sm:-mt-8">
+              <TicketPercent className="mx-auto mb-2 h-16 w-16 text-green-400 sm:h-20 sm:w-20" />
+              <h3 className="text-lg font-bold text-green-400 sm:text-xl">
                 🎉 Parabéns! Você conseguiu o desconto máximo de 72%!
               </h3>
-              <p className="mt-1 text-xs text-white/80">
+              <p className="mt-1 text-sm text-white/80">
                 Sua sorte garantiu o melhor preço disponível hoje.
               </p>
-              <p className="mt-2 text-xs sm:text-sm">
+              <p className="mt-2 text-sm">
                 De <span className="line-through">R$ 89,90</span> por apenas
               </p>
-              <p className="font-headline text-3xl font-extrabold text-amber-300 sm:text-4xl">
+              <p className="font-headline text-4xl font-extrabold text-amber-300 sm:text-5xl">
                 R$ 24,99
               </p>
               <CtaButton
                 href={checkoutUrl}
-                className="mt-4 px-6 py-3 text-sm sm:text-base"
+                className="mt-4 px-6 py-3 text-base sm:text-lg"
               >
                 Garantir meu Desconto
                 <ArrowRight />
