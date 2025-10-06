@@ -25,7 +25,7 @@ const prizes = [
   { text: '30% OFF', color: 'bg-purple-700' },
   { text: 'Mentoria', color: 'bg-purple-800' },
   { text: '50% OFF', color: 'bg-purple-700' },
-  { text: '72% OFF', color: 'bg-green-600' }, // Winning prize
+  { text: '72% OFF', color: 'bg-purple-800' }, // Winning prize
   { text: '20% OFF', color: 'bg-purple-700' },
   { text: 'E-book Grátis', color: 'bg-purple-800' },
 ];
@@ -121,7 +121,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                     }}
                   >
                     <span
-                      className="block -rotate-90 transform-gpu text-sm font-bold text-white"
+                      className="block transform-gpu text-sm font-bold text-white"
                       style={{
                         transform: `rotate(${angle / 2}deg) translate(0, 20px)`,
                       }}
