@@ -1,3 +1,4 @@
+
 'use client';
 
 import { CircleDollarSign, Flame, Gift, TicketPercent } from 'lucide-react';
@@ -24,7 +25,7 @@ export function InvestmentSection() {
           <div className="mt-8 flex flex-col items-center gap-2 rounded-2xl border border-amber-400/50 bg-amber-400/10 p-4">
             <div className="flex items-center gap-2 font-bold text-amber-300">
               <Gift className="size-5" />
-              <span>Gatilho Especial</span>
+              <span>Presente Especial</span>
             </div>
             <p className="text-center text-white/90">
               Gire a roleta da sorte e ganhe até <b>80% de desconto</b> no valor
