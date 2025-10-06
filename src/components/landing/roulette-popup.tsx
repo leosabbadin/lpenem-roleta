@@ -79,7 +79,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
       }, 300); // wait for dialog close animation
     }
   };
-  
+
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
 
@@ -88,7 +88,9 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
       <DialogContent className="max-w-md border-primary/50 bg-[#1a1338] text-white">
         <DialogHeader>
           <DialogTitle className="text-center font-headline text-2xl text-amber-300">
-            {showResult ? 'Desconto Desbloqueado!' : 'Gire a Roleta da Sorte!'}
+            {showResult
+              ? 'Desconto Desbloqueado!'
+              : 'Gire a Roleta da Sorte!'}
           </DialogTitle>
           <DialogDescription className="text-center text-white/80">
             {showResult
@@ -149,24 +151,23 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                           clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
                           transform: 'translateX(-50%)',
                         }}
-                      >
-                      </div>
+                      ></div>
                     </div>
                   );
                 })}
-                 <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full border-4 border-amber-400 bg-[#1a1338] shadow-inner" />
+                <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full border-4 border-amber-400 bg-[#1a1338] shadow-inner" />
               </div>
             </>
           ) : (
             <div className="relative h-64 w-64 rounded-full border-4 border-green-400 bg-green-900/20 flex flex-col items-center justify-center p-4 text-center shadow-[0_0_30px_rgba(74,222,128,0.6)]">
-               <TicketPercent className="mx-auto h-12 w-12 text-green-400" />
-               <p className="mt-2 text-sm font-bold text-white">
-                 🎉 Parabéns! Você conseguiu o desconto máximo de 72%!
-               </p>
-               <p className="mt-1 text-xs text-white/80">
-                 Sua sorte garantiu o melhor preço disponível hoje.
-               </p>
-           </div>
+              <TicketPercent className="mx-auto h-12 w-12 text-green-400" />
+              <p className="mt-2 text-sm font-bold text-white">
+                🎉 Parabéns! Você conseguiu o desconto máximo de 72%!
+              </p>
+              <p className="mt-1 text-xs text-white/80">
+                Sua sorte garantiu o melhor preço disponível hoje.
+              </p>
+            </div>
           )}
         </div>
 
@@ -190,7 +191,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             </>
           ) : (
             <div className="animate-in fade-in-50 duration-500 text-center">
-               <div className="mb-2 rounded-md border border-red-500/50 bg-red-500/20 px-2 py-1 text-center font-semibold text-white">
+              <div className="mb-2 rounded-md border border-red-500/50 bg-red-500/20 px-2 py-1 text-center font-semibold text-white">
                 Sua oferta expira em:{' '}
                 <span className="font-mono tracking-widest">
                   {String(minutes).padStart(2, '0')}:
