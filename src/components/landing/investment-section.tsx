@@ -1,7 +1,7 @@
 
 'use client';
 
-import { CircleDollarSign, Flame, Gift } from 'lucide-react';
+import { CircleDollarSign, Flame, Gift, TicketPercent } from 'lucide-react';
 import { CtaButton } from './cta-button';
 import { Highlight } from './highlight';
 import { SectionTitle } from './section-title';
@@ -16,7 +16,7 @@ export function InvestmentSection() {
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background to-[#1a1338]" />
 
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="mx-auto max-w-3xl rounded-3xl bg-gradient-to-br from-[#2c1a5c] via-[#562E8A] to-[#8031a5] p-10 text-center shadow-[0_20px_80px_rgba(150,80,255,.35)]">
+        <div className="mx-auto max-w-3xl rounded-3xl bg-gradient-to-br from-[#6c46ff]/80 via-[#a25aff]/80 to-[#ff70b7]/80 p-6 text-center shadow-[0_20px_80px_rgba(150,80,255,.35)] md:p-10">
           <SectionTitle>
             <div className="flex items-center justify-center gap-3">
               <CircleDollarSign className="size-8 text-primary" /> Investimento
@@ -45,7 +45,7 @@ export function InvestmentSection() {
             className="font-headline text-[56px] font-extrabold tracking-tight sm:text-[72px] md:text-[88px]"
             style={{ textShadow: '0 10px 30px rgba(252, 211, 77, 0.4)' }}
           >
-            <Highlight>R$ ??,??</Highlight>
+            <Highlight isInvestmentHighlight>R$ ??,??</Highlight>
           </div>
           <div className="-mt-2 text-white/80">
             (Clique abaixo para revelar seu preço)
