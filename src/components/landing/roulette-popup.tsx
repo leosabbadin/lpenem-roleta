@@ -111,7 +111,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 >
                   <div
                     className={cn(
-                      'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-3',
+                      'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-4 text-center',
                       prize.color,
                       'border-r border-amber-400/50'
                     )}
@@ -121,9 +121,11 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                     }}
                   >
                     <span
-                      className="block text-sm font-bold text-white"
+                      className="block text-sm font-bold text-white -rotate-90"
                       style={{
-                        transform: `rotate(${angle / 2}deg) translateY(-0.3rem)`,
+                        transform: `rotate(${angle / 2}deg) translate(-50%, -10px) rotate(-${angle/2}deg)`,
+                        width: '100px',
+                        left: '50%'
                       }}
                     >
                       {prize.text}
