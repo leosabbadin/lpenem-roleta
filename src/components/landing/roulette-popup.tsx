@@ -152,22 +152,22 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             </>
           ) : (
             <div className="animate-in fade-in-50 duration-500 text-center">
-              <TicketPercent className="mx-auto mb-2 h-8 w-8 text-green-400 sm:h-10 sm:w-10" />
-              <h3 className="text-base font-bold text-green-400 sm:text-lg">
+              <TicketPercent className="mx-auto mb-2 h-8 w-8 text-green-400" />
+              <h3 className="text-base font-bold text-green-400">
                 🎉 Parabéns! Você conseguiu o desconto máximo de 72%!
               </h3>
-              <p className="mt-1 text-xs text-white/80 sm:text-sm">
+              <p className="mt-1 text-xs text-white/80">
                 Sua sorte garantiu o melhor preço disponível hoje.
               </p>
               <p className="mt-2 text-sm">
                 De <span className="line-through">R$ 89,90</span> por apenas
               </p>
-              <p className="font-headline text-4xl font-extrabold text-amber-300 sm:text-5xl">
+              <p className="font-headline text-4xl font-extrabold text-amber-300">
                 R$ 24,99
               </p>
               <CtaButton
                 href={checkoutUrl}
-                className="mt-4 px-6 py-3 text-base sm:mt-6 sm:px-8 sm:py-4 sm:text-lg"
+                className="mt-4 px-6 py-3 text-base"
               >
                 Garantir meu Desconto
                 <ArrowRight />
