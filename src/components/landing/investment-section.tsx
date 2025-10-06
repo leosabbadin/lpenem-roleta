@@ -1,9 +1,15 @@
+'use client';
+
 import { CircleDollarSign, Flame } from 'lucide-react';
 import { CtaButton } from './cta-button';
 import { Highlight } from './highlight';
 import { SectionTitle } from './section-title';
+import { useState } from 'react';
+import { RoulettePopup } from './roulette-popup';
 
 export function InvestmentSection() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   return (
     <section id="investimento" className="section relative isolate">
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0a0b2e] to-[#1a1338]" />
@@ -25,7 +31,7 @@ export function InvestmentSection() {
           <p className="mt-8 text-xl text-white/70">
             De{' '}
             <span className="font-bold text-red-400 line-through">
-              R$ 199,00
+              R$ 109,90
             </span>{' '}
             por
           </p>
@@ -44,12 +50,13 @@ export function InvestmentSection() {
           </div>
 
           <div className="mt-8 flex justify-center">
-            <CtaButton href="https://pay.kirvano.com/a321493b-b7f4-4bc1-aee7-76ddd61e2c85">
+            <CtaButton asButton onClick={() => setIsPopupOpen(true)}>
               <Flame /> Quero minha Redação Nota 1000 agora
             </CtaButton>
           </div>
         </div>
       </div>
+      <RoulettePopup open={isPopupOpen} onOpenChange={setIsPopupOpen} />
     </section>
   );
 }

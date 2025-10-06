@@ -163,4 +163,17 @@
       transform: translateX(75%);
     }
   }
+
+  /* Roulette animation */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      /* Ends at 72% discount slice. 3600deg for 10 spins + angle for slice */
+      /* Slice angle = 360/8 = 45deg. Winning slice is at index 5. */
+      /* Angle = 360 * 10 + (360 - (45 * 5) - (45/2)) */
+      transform: rotate(3712.5deg);
+    }
+  }
 }
