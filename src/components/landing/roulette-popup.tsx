@@ -51,7 +51,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
         dialogContentRef.current.getBoundingClientRect();
       setDimensions({ width, height });
     }
-  }, [open]);
+  }, [open, showResult]); // Rerun when result shows to get dimensions
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -101,12 +101,13 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
         ref={dialogContentRef}
         className="max-w-md border-primary/50 bg-[#1a1338] text-white"
       >
-        {showResult && (
+        {showResult && dimensions.width > 0 && (
           <ReactConfetti
             width={dimensions.width}
             height={dimensions.height}
             recycle={false}
             numberOfPieces={200}
+            className='!z-50'
           />
         )}
         <DialogHeader>
