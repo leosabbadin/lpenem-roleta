@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useRef } from 'react';
@@ -78,17 +79,17 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
         <div className="relative my-8 flex items-center justify-center">
           {/* Pointer */}
           <div
-            className="absolute -top-4 z-10 h-0 w-0"
+            className="absolute -top-3 z-10 h-0 w-0"
             style={{
-              borderLeft: '12px solid transparent',
-              borderRight: '12px solid transparent',
-              borderTop: '20px solid #ef4444',
+              borderLeft: '10px solid transparent',
+              borderRight: '10px solid transparent',
+              borderTop: '16px solid #ef4444',
             }}
           />
 
           <div
             className={cn(
-              'relative h-64 w-64 rounded-full border-4 border-amber-300 transition-transform duration-[4000ms] ease-[cubic-bezier(.1,.6,.3,1)]',
+              'relative h-56 w-56 rounded-full border-4 border-amber-300 transition-transform duration-[4000ms] ease-[cubic-bezier(.1,.6,.3,1)]',
               'shadow-[0_0_25px_rgba(255,193,77,0.5)]',
               isSpinning && 'animate-spin'
             )}
@@ -107,7 +108,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 >
                   <div
                     className={cn(
-                      'flex h-full w-full items-start justify-center pt-4 text-center text-xs font-bold text-white',
+                      'flex h-full w-full items-start justify-center pt-3 text-center text-xs font-bold text-white',
                       i === WINNING_INDEX ? 'bg-green-500/80' : 'bg-purple-500/80',
                       i % 2 === 0 && 'bg-purple-700/80',
                       i === WINNING_INDEX && '!bg-green-500',
@@ -121,7 +122,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                   >
                     <span
                       className="block"
-                      style={{ transform: `skewX(45deg) rotate(${angle/2}deg) translateY(-0.5rem)` }}
+                      style={{ transform: `skewX(45deg) rotate(${angle/2}deg) translateY(-0.25rem)` }}
                     >
                       {prize.text}
                     </span>
