@@ -5,7 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { WhatsAppButton } from '@/components/landing/whatsapp-button';
 
 export const metadata: Metadata = {
-  title: 'ENEM Redaction Hacker',
+  title: 'Hackeando a Redação do ENEM',
   description:
     'Transforme sua redação do ENEM em uma máquina de nota 900+ em apenas 7 dias.',
 };
