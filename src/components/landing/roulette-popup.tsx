@@ -25,7 +25,7 @@ const prizes = [
   { text: '30% OFF', color: 'bg-purple-700' },
   { text: 'Mentoria', color: 'bg-purple-800' },
   { text: '50% OFF', color: 'bg-purple-700' },
-  { text: '72% OFF', color: 'bg-purple-800' },
+  { text: '72% OFF', color: 'bg-green-600' },
   { text: '20% OFF', color: 'bg-purple-700' },
   { text: 'E-book Grátis', color: 'bg-purple-800' },
 ];
@@ -103,6 +103,8 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             {prizes.map((prize, i) => {
               const angle = 360 / prizes.length;
               const rotation = angle * i;
+              const prizeColor = i === WINNING_INDEX ? 'bg-green-600' : prize.color;
+              
               return (
                 <div
                   key={i}
@@ -112,7 +114,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                   <div
                     className={cn(
                       'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-4 text-center',
-                      prize.color,
+                      isSpinning ? prize.color : (i === WINNING_INDEX ? prize.color : prize.color),
                       'border-r border-amber-400/50'
                     )}
                     style={{
@@ -121,9 +123,18 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                     }}
                   >
                     <span
-                      className="block transform-gpu text-sm font-bold text-white"
+                      className="block transform-gpu font-bold text-white"
                       style={{
-                        transform: `rotate(${angle / 2}deg) translate(0, 20px)`,
+                        transform: `rotate(${angle / 2}deg) translate(0px, 10px) rotate(-${angle / 2}deg)`,
+                         textShadow: '0 1px 2px rgba(0,0,0,0.5)',
+                         writingMode: 'vertical-rl',
+                         transformOrigin: 'center',
+                         textAlign: 'center',
+                         display: 'flex',
+                         justifyContent: 'center',
+                         alignItems: 'center',
+                         height: '100%',
+                         paddingBottom: '20px',
                       }}
                     >
                       {prize.text}
