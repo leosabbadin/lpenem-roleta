@@ -42,8 +42,7 @@ export function InvestmentSection() {
           </div>
           <p className="text-center text-white/90">
             Um presente para você: 50% OFF garantido! <br />
-            Quer tentar um presente ainda melhor? Gire a roleta e descubra seu
-            prêmio final!
+            Quer testar sua sorte para um prêmio ainda maior?
           </p>
         </div>
 
@@ -57,7 +56,9 @@ export function InvestmentSection() {
           className="font-headline text-[60px] font-extrabold tracking-tight sm:text-[72px] md:text-[88px]"
           style={{ textShadow: '0 10px 30px rgba(252, 211, 77, 0.4)' }}
         >
-          <Highlight>R$ 45,00</Highlight>
+          <Highlight>
+            <span className="text-4xl sm:text-5xl md:text-6xl">R$</span>45,00
+          </Highlight>
         </div>
         
         <div className="mt-4 rounded-lg bg-pink-600/20 px-4 py-3 text-sm font-bold shadow-lg">
