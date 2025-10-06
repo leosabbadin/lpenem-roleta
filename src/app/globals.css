@@ -194,8 +194,8 @@
 /* Este código só será aplicado em telas com até 768px de largura (celulares) */
 @media (max-width: 768px) {
   #investimento {
-    /* 20vh = 20% da altura da tela. 
+    /* 45vh = 45% da altura da tela. 
        Ajuste este valor para o que for necessário. */
-    scroll-margin-top: 20vh;
+    scroll-margin-top: 45vh;
   }
 }
