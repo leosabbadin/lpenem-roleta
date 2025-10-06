@@ -19,14 +19,14 @@ type RoulettePopupProps = {
 };
 
 const prizes = [
-  { text: '10% OFF', color: 'bg-amber-400' },
-  { text: 'Tente de Novo', color: 'bg-purple-500' },
-  { text: '30% OFF', color: 'bg-amber-400' },
-  { text: 'Mentoria', color: 'bg-purple-500' },
-  { text: '50% OFF', color: 'bg-amber-400' },
+  { text: '10% OFF', color: 'bg-purple-500/80' },
+  { text: 'Tente de Novo', color: 'bg-purple-700/80' },
+  { text: '30% OFF', color: 'bg-purple-500/80' },
+  { text: 'Mentoria', color: 'bg-purple-700/80' },
+  { text: '50% OFF', color: 'bg-purple-500/80' },
   { text: '72% OFF', color: 'bg-green-500' }, // Winning prize
-  { text: '20% OFF', color: 'bg-amber-400' },
-  { text: 'E-book Grátis', color: 'bg-purple-500' },
+  { text: '20% OFF', color: 'bg-purple-500/80' },
+  { text: 'E-book Grátis', color: 'bg-purple-700/80' },
 ];
 
 const WINNING_INDEX = 5; // Index of '72% OFF'
@@ -65,9 +65,9 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
 
   return (
     <Dialog open={open} onOpenChange={resetState}>
-      <DialogContent className="max-w-md bg-[#1a1338] border-primary/50 text-white overflow-hidden">
+      <DialogContent className="max-w-md border-primary/50 bg-[#1a1338] text-white overflow-hidden">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-headline text-center text-amber-300">
+          <DialogTitle className="text-center font-headline text-2xl text-amber-300">
             Gire a Roleta da Sorte!
           </DialogTitle>
           <DialogDescription className="text-center text-white/80">
@@ -89,6 +89,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
           <div
             className={cn(
               'relative h-64 w-64 rounded-full border-4 border-amber-300 transition-transform duration-[4000ms] ease-[cubic-bezier(.1,.6,.3,1)]',
+              'shadow-[0_0_25px_rgba(255,193,77,0.5)]',
               isSpinning && 'animate-spin'
             )}
             style={{
@@ -101,22 +102,29 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
               return (
                 <div
                   key={i}
-                  className={cn(
-                    'absolute left-0 top-0 h-full w-full origin-center',
-                    '[clip-path:polygon(50%_50%,100%_0,100%_100%)]'
-                  )}
-                  style={{ transform: `rotate(${rotation}deg)` }}
+                  className="absolute left-0 top-0 h-full w-full origin-center"
+                  style={{
+                    transform: `rotate(${rotation}deg)`,
+                    clipPath: 'polygon(50% 50%, 100% 0, 100% 100%)',
+                  }}
                 >
                   <div
                     className={cn(
-                      'absolute flex h-full w-full items-center justify-center',
-                      prize.color
+                      'absolute flex h-full w-full items-start justify-center pt-5',
+                      prize.color,
+                      'bg-gradient-to-br from-purple-600/70 via-purple-800/80 to-purple-900/90'
                     )}
-                    style={{ transform: `rotate(${angle / 2}deg)` }}
+                    style={{
+                      transform: `rotate(${angle / 2}deg)`,
+                    }}
                   >
-                    <span
-                      className="block -rotate-90 text-center text-xs font-bold text-white"
-                      style={{ transform: `translateY(-4.5rem) rotate(${-(angle / 2)-90}deg)`}}
+                     <span
+                      className="block text-center text-xs font-bold text-white"
+                      style={{
+                        transform: `rotate(${
+                          angle / 2 + 5
+                        }deg) translateY(0.5rem)`,
+                      }}
                     >
                       {prize.text}
                     </span>
@@ -124,7 +132,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 </div>
               );
             })}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex h-16 w-16 items-center justify-center rounded-full border-4 border-amber-400 bg-[#1a1338] text-sm font-bold shadow-inner">
+             <div className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-amber-400 bg-[#1a1338] text-sm font-bold shadow-inner">
                GIRAR
              </div>
           </div>
