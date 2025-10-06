@@ -39,6 +39,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
   const [showResult, setShowResult] = useState(false);
   const [timeLeft, setTimeLeft] = useState(COUNTDOWN_SECONDS);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const resultAudioRef = useRef<HTMLAudioElement>(null);
   const checkoutUrl =
     'https://pay.kirvano.com/a321493b-b7f4-4bc1-aee7-76ddd61e2c85';
 
@@ -65,6 +66,13 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
 
     return () => clearInterval(timer);
   }, [showResult, timeLeft]);
+
+  useEffect(() => {
+    if (showResult && resultAudioRef.current) {
+      resultAudioRef.current.currentTime = 0;
+      resultAudioRef.current.play();
+    }
+  }, [showResult]);
 
   const handleSpin = () => {
     if (audioRef.current) {
@@ -237,6 +245,11 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
         <audio
           ref={audioRef}
           src="https://github.com/leosabbadin/imagem/raw/1890179078a308719c25a37e0b5b96ee9b15b756/202509301914%20(3).mp4"
+          preload="auto"
+        />
+        <audio
+          ref={resultAudioRef}
+          src="https://github.com/leosabbadin/imagem/raw/c99431866095e0cf2b40cb0883f1637c1c1d5d7e/winner-game-sound-404167.mp3"
           preload="auto"
         />
       </DialogContent>
