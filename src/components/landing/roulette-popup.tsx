@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Loader2, TicketPercent, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CtaButton } from './cta-button';
+import ReactConfetti from 'react-confetti';
 
 type RoulettePopupProps = {
   open: boolean;
@@ -40,6 +41,17 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const checkoutUrl =
     'https://pay.kirvano.com/a321493b-b7f4-4bc1-aee7-76ddd61e2c85';
+
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const dialogContentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (open && dialogContentRef.current) {
+      const { width, height } =
+        dialogContentRef.current.getBoundingClientRect();
+      setDimensions({ width, height });
+    }
+  }, [open]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -85,7 +97,18 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
 
   return (
     <Dialog open={open} onOpenChange={resetState}>
-      <DialogContent className="max-w-md border-primary/50 bg-[#1a1338] text-white">
+      <DialogContent
+        ref={dialogContentRef}
+        className="max-w-md border-primary/50 bg-[#1a1338] text-white"
+      >
+        {showResult && (
+          <ReactConfetti
+            width={dimensions.width}
+            height={dimensions.height}
+            recycle={false}
+            numberOfPieces={200}
+          />
+        )}
         <DialogHeader>
           <DialogTitle className="text-center font-headline text-2xl text-amber-300">
             {showResult ? 'Desconto Desbloqueado!' : 'Sua Chance é Agora!'}
@@ -160,7 +183,8 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             <div className="relative h-64 w-64 rounded-full border-4 border-green-400 bg-green-900/20 flex flex-col items-center justify-center p-4 text-center shadow-[0_0_30px_rgba(74,222,128,0.6)]">
               <TicketPercent className="mx-auto h-12 w-12 text-green-400" />
               <p className="mt-2 text-sm font-bold text-white">
-                🎉 Uau, que sorte! Você conseguiu um desconto espetacular de 72%!
+                🎉 Uau, que sorte! Você conseguiu um desconto espetacular de
+                72%!
               </p>
             </div>
           )}
