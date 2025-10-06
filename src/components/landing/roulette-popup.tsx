@@ -25,7 +25,7 @@ const prizes = [
   { text: '30% OFF', color: 'bg-purple-700' },
   { text: 'Mentoria', color: 'bg-purple-800' },
   { text: '50% OFF', color: 'bg-purple-700' },
-  { text: '72% OFF', color: 'bg-green-600' },
+  { text: '72% OFF', color: 'bg-purple-700' }, // This will be the winning prize
   { text: '20% OFF', color: 'bg-purple-700' },
   { text: 'E-book Grátis', color: 'bg-purple-800' },
 ];
@@ -95,16 +95,19 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             )}
             style={
               {
-                // Custom property for the animation end state. 360 * 10 rounds + final position
-                '--final-rotation': `${360 * 10 - (360 / prizes.length) * WINNING_INDEX - 360 / prizes.length / 2}deg`,
+                '--final-rotation': `${
+                  360 * 10 -
+                  (360 / prizes.length) * WINNING_INDEX -
+                  360 / prizes.length / 2
+                }deg`,
               } as React.CSSProperties
             }
           >
             {prizes.map((prize, i) => {
               const angle = 360 / prizes.length;
               const rotation = angle * i;
-              const prizeColor = i === WINNING_INDEX ? 'bg-green-600' : prize.color;
-              
+              const prizeColor = prize.color;
+
               return (
                 <div
                   key={i}
@@ -114,7 +117,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                   <div
                     className={cn(
                       'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-4 text-center',
-                      isSpinning ? prize.color : (i === WINNING_INDEX ? prize.color : prize.color),
+                      prizeColor,
                       'border-r border-amber-400/50'
                     )}
                     style={{
@@ -125,16 +128,8 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                     <span
                       className="block transform-gpu font-bold text-white"
                       style={{
-                        transform: `rotate(${angle / 2}deg) translate(0px, 10px) rotate(-${angle / 2}deg)`,
-                         textShadow: '0 1px 2px rgba(0,0,0,0.5)',
-                         writingMode: 'vertical-rl',
-                         transformOrigin: 'center',
-                         textAlign: 'center',
-                         display: 'flex',
-                         justifyContent: 'center',
-                         alignItems: 'center',
-                         height: '100%',
-                         paddingBottom: '20px',
+                        transform: `translateY(8px) rotate(${angle / 2}deg)`,
+                        textShadow: '0 1px 2px rgba(0,0,0,0.5)',
                       }}
                     >
                       {prize.text}
