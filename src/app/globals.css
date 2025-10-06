@@ -198,3 +198,12 @@
     scroll-margin-top: -45px;
   }
 }
+
+/* Este código só será aplicado em telas com 769px ou mais de largura (desktop) */
+@media (min-width: 769px) {
+  #investimento {
+    /* Valor POSITIVO para criar um respiro no topo da tela.
+       Ajuste este número conforme necessário. */
+    scroll-margin-top: -30px;
+  }
+}
