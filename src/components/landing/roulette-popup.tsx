@@ -93,10 +93,12 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
               'shadow-[0_0_25px_rgba(255,193,77,0.5)]',
               isSpinning && 'animate-[spin_4s_cubic-bezier(.1,.6,.3,1)_forwards]'
             )}
-            style={{
-              // Custom property for the animation end state
-              '--final-rotation': '3712.5deg',
-            } as React.CSSProperties}
+            style={
+              {
+                // Custom property for the animation end state
+                '--final-rotation': '3712.5deg',
+              } as React.CSSProperties
+            }
           >
             {prizes.map((prize, i) => {
               const angle = 360 / prizes.length;
@@ -109,8 +111,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 >
                   <div
                     className={cn(
-                      'absolute left-1/2 top-0 h-1/2 w-1/2 origin-bottom-left flex items-start justify-center pt-2',
-                      'bg-clip-text text-transparent', // Makes text have background gradient
+                      'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-2',
                       i % 2 === 0
                         ? 'bg-gradient-to-b from-purple-500 to-purple-700'
                         : 'bg-gradient-to-b from-purple-700 to-purple-900',
@@ -118,13 +119,12 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                       'border-r border-amber-400/30'
                     )}
                     style={{
-                      clipPath:
-                        'polygon(50% 100%, 0 0, 100% 0)', // Creates the triangle slice
+                      clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
                       transform: 'translateX(-50%)',
                     }}
                   >
                     <span
-                      className="block text-white text-xs font-bold"
+                      className="block -translate-y-px text-xs font-bold text-white"
                       style={{
                         transform: `rotate(${angle / 2}deg) translateY(-0.2rem)`,
                       }}
@@ -135,7 +135,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 </div>
               );
             })}
-             <div className="absolute inset-[10px] rounded-full bg-[#1a1338] border-4 border-amber-300" />
+            <div className="absolute inset-[10px] rounded-full border-4 border-amber-300 bg-[#1a1338]" />
           </div>
         </div>
 
