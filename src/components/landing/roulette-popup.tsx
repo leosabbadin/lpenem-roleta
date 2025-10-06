@@ -141,7 +141,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                     >
                       <div
                         className={cn(
-                          'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-2 text-center text-xs font-bold',
+                          'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-2 text-center text-xs font-bold text-white',
                           prize.color,
                           'border-r border-amber-400/50'
                         )}
@@ -180,7 +180,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
               <Button
                 onClick={handleSpin}
                 disabled={isSpinning}
-                className="mt-4 bg-green-500 text-lg font-bold text-white hover:bg-green-600"
+                className="cta-pulse mt-4 bg-green-500 text-lg font-bold text-white hover:bg-green-600"
               >
                 {isSpinning && (
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
