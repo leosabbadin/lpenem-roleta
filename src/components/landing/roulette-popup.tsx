@@ -69,15 +69,17 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
       <DialogContent className="max-w-md border-primary/50 bg-[#1a1338] text-white">
         <DialogHeader>
           <DialogTitle className="text-center font-headline text-2xl text-amber-300">
-            Gire a Roleta da Sorte!
+            {showResult ? 'Parabéns!' : 'Gire a Roleta da Sorte!'}
           </DialogTitle>
           <DialogDescription className="text-center text-white/80">
-            Você está a um giro de desbloquear um desconto exclusivo.
+            {showResult
+              ? 'A sorte estava do seu lado! Veja o que você ganhou:'
+              : 'Você está a um giro de desbloquear um desconto exclusivo.'}
           </DialogDescription>
         </DialogHeader>
 
         <div className="relative my-4 flex items-center justify-center sm:my-8">
-          {!showResult ? (
+          {!isSpinning && !showResult && (
             <>
               {/* Pointer */}
               <div
@@ -92,19 +94,8 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
               <div
                 className={cn(
                   'relative h-64 w-64 rounded-full border-4 border-amber-400 overflow-hidden transition-transform duration-[4000ms] ease-[cubic-bezier(.1,.6,.3,1)]',
-                  'shadow-[0_0_30px_rgba(252,211,77,0.6)]',
-                  isSpinning &&
-                    'animate-[spin_4s_cubic-bezier(.1,.6,.3,1)_forwards]'
+                  'shadow-[0_0_30px_rgba(252,211,77,0.6)]'
                 )}
-                style={
-                  {
-                    '--final-rotation': `${
-                      360 * 10 -
-                      (360 / prizes.length) * WINNING_INDEX -
-                      360 / prizes.length / 2
-                    }deg`,
-                  } as React.CSSProperties
-                }
               >
                 {prizes.map((prize, i) => {
                   const angle = 360 / prizes.length;
@@ -128,7 +119,10 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                           transform: 'translateX(-50%)',
                         }}
                       >
-                         <span style={{ transform: `rotate(${textRotation}deg)` }} className="inline-block whitespace-nowrap">
+                        <span
+                          style={{ transform: `rotate(${textRotation}deg)` }}
+                          className="inline-block whitespace-nowrap"
+                        >
                           {prize.text}
                         </span>
                       </div>
@@ -138,7 +132,66 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full border-4 border-amber-400 bg-[#1a1338] shadow-inner" />
               </div>
             </>
-          ) : null}
+          )}
+
+          {isSpinning && (
+            <div
+              className={cn(
+                'relative h-64 w-64 rounded-full border-4 border-amber-400 overflow-hidden transition-transform duration-[4000ms] ease-[cubic-bezier(.1,.6,.3,1)]',
+                'shadow-[0_0_30px_rgba(252,211,77,0.6)]',
+                'animate-[spin_4s_cubic-bezier(.1,.6,.3,1)_forwards]'
+              )}
+              style={
+                {
+                  '--final-rotation': `${
+                    360 * 10 -
+                    (360 / prizes.length) * WINNING_INDEX -
+                    360 / prizes.length / 2
+                  }deg`,
+                } as React.CSSProperties
+              }
+            >
+              {prizes.map((prize, i) => {
+                const angle = 360 / prizes.length;
+                const rotation = angle * i;
+                const textRotation = -90 + angle / 2;
+
+                return (
+                  <div
+                    key={i}
+                    className="absolute left-0 top-0 h-full w-full"
+                    style={{ transform: `rotate(${rotation}deg)` }}
+                  >
+                    <div
+                      className={cn(
+                        'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-2 text-center text-xs font-bold',
+                        prize.color,
+                        'border-r border-amber-400/50'
+                      )}
+                      style={{
+                        clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
+                        transform: 'translateX(-50%)',
+                      }}
+                    >
+                      <span
+                        style={{ transform: `rotate(${textRotation}deg)` }}
+                        className="inline-block whitespace-nowrap"
+                      >
+                        {prize.text}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+              <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full border-4 border-amber-400 bg-[#1a1338] shadow-inner" />
+            </div>
+          )}
+
+          {showResult && (
+             <div className="animate-in fade-in-50 duration-500 text-center">
+               <TicketPercent className="mx-auto h-16 w-16 text-green-400 sm:h-20 sm:w-20" />
+             </div>
+          )}
         </div>
 
         <div className="text-center">
@@ -161,17 +214,10 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             </>
           ) : (
             <div className="animate-in fade-in-50 duration-500 text-center">
-              <TicketPercent className="mx-auto mb-4 h-20 w-20 text-green-400" />
-              <h3 className="text-2xl font-bold text-green-400">
-                Parabéns!
-              </h3>
-              <p className="mt-2 text-white/80">
-                A sorte estava do seu lado! Veja o que você ganhou:
-              </p>
               <p className="mt-2 text-sm">
                 De <span className="line-through">R$ 89,90</span> por apenas
               </p>
-              <p className="font-headline text-4xl font-extrabold text-amber-300">
+              <p className="font-headline text-3xl font-extrabold text-amber-300 sm:text-4xl">
                 R$ 24,99
               </p>
               <CtaButton
