@@ -46,7 +46,7 @@ export function InvestmentSection() {
           </p>
         </div>
 
-        <p className="mt-8 text-xl text-white/70">
+        <p className="mt-6 text-xl text-white/70">
           De{' '}
           <span className="font-bold text-red-400 line-through">R$ 89,90</span>{' '}
           por
@@ -58,11 +58,10 @@ export function InvestmentSection() {
         >
           <Highlight>45,00</Highlight>
         </div>
-        <div className="-mt-3 text-white/80">
-          (Clique abaixo para garantir desconto adicional)
-        </div>
-        <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-pink-600/85 px-4 py-1.5 text-sm font-bold shadow-lg">
-          <Flame className="size-4" /> OFERTA DE LANÇAMENTO
+        
+        <div className="mt-6 rounded-lg bg-pink-600/85 px-4 py-3 text-sm font-bold shadow-lg">
+          <p className="font-bold">🎯 GIRE A ROLETA E ARRISQUE-SE A GANHAR MAIS DESCONTO!</p>
+          <p className="text-xs font-normal">Pode chegar até 90% OFF</p>
         </div>
 
         <div className="mt-8 flex justify-center">
