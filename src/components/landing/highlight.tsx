@@ -16,7 +16,7 @@ export function Highlight({
       className={cn(
         'font-bold',
         isInvestmentHighlight
-          ? 'text-amber-300'
+          ? 'animated-investment-text-gradient'
           : 'animated-text-gradient',
         className
       )}
