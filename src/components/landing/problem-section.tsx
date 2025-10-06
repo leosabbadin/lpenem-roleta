@@ -36,7 +36,7 @@ export function ProblemSection() {
       </div>
 
       <div className="mt-10 flex justify-center">
-        <CtaButton href="https://pay.kirvano.com/a321493b-b7f4-4bc1-aee7-76ddd61e2c85">
+        <CtaButton href="#investimento">
           <Target /> Quero parar de errar na redação hoje!
         </CtaButton>
       </div>

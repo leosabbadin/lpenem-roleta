@@ -38,7 +38,7 @@ export function BonusSection() {
         👉 Esses bônus multiplicam sua preparação e aceleram sua evolução.
       </p>
       <div className="mt-10 flex justify-center">
-        <CtaButton href="https://pay.kirvano.com/a321493b-b7f4-4bc1-aee7-76ddd61e2c85">
+        <CtaButton href="#investimento">
           <Target /> Garantir meus bônus exclusivos AGORA!
         </CtaButton>
       </div>

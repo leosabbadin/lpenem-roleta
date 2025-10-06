@@ -32,7 +32,7 @@ export function FinalCtaSection() {
         </ul>
         <div className="mt-6 md:mt-8">
           <CtaButton
-            href="https://pay.kirvano.com/a321493b-b7f4-4bc1-aee7-76ddd61e2c85"
+            href="#investimento"
             className="px-8 py-4 text-lg md:px-10 md:py-5 md:text-xl shadow-[0_15px_40px_rgba(255,140,50,0.45)]"
           >
             <Target className="size-5 md:size-6" />

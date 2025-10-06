@@ -87,7 +87,7 @@ export function ContentSection() {
       </div>
 
       <div className="mt-10 flex justify-center">
-        <CtaButton href="https://pay.kirvano.com/a321493b-b7f4-4bc1-aee7-76ddd61e2c85">
+        <CtaButton href="#investimento">
           <Target /> Desbloquear todo o conteúdo já!
         </CtaButton>
       </div>

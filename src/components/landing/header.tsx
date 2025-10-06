@@ -63,7 +63,7 @@ export function Header() {
 
         <div className="mt-8 flex justify-center">
           <CtaButton
-            href="https://pay.kirvano.com/a321493b-b7f4-4bc1-aee7-76ddd61e2c85"
+            href="#investimento"
             className="text-center"
           >
             <Target /> Quero garantir minha vaga agora
