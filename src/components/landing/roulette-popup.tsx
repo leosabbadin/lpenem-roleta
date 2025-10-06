@@ -236,7 +236,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
         </div>
         <audio
           ref={audioRef}
-          src="https://firebasestorage.googleapis.com/v0/b/genkit-llm-hackathon.appspot.com/o/roulette-spin.mp3?alt=media&token=c41d6f51-2483-4a37-b952-054523e1c6d8"
+          src="https://github.com/leosabbadin/imagem/raw/1890179078a308719c25a37e0b5b96ee9b15b756/202509301914%20(3).mp4"
           preload="auto"
         />
       </DialogContent>
