@@ -38,7 +38,7 @@ export function InvestmentSection() {
             <span className="font-bold text-red-400 line-through">
               R$ 89,90
             </span>{' '}
-            por até
+            por
           </p>
 
           <div
@@ -48,7 +48,7 @@ export function InvestmentSection() {
             <Highlight>R$ ??,??</Highlight>
           </div>
           <div className="-mt-2 text-white/80">
-            à vista no pix ou cartão
+            (Clique abaixo para revelar seu preço)
           </div>
           <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-pink-600/85 px-4 py-1.5 text-sm font-bold shadow-lg">
             <Flame className="size-4" /> OFERTA DE LANÇAMENTO
