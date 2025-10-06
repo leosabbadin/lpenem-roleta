@@ -78,8 +78,8 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="relative my-4 flex items-center justify-center sm:my-8">
-          {!isSpinning && !showResult && (
+        <div className="relative my-4 flex h-64 items-center justify-center sm:my-8">
+          {!showResult && !isSpinning && (
             <>
               {/* Pointer */}
               <div
@@ -134,12 +134,14 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             </>
           )}
 
-          {isSpinning && (
+          {(isSpinning || showResult) && (
             <div
               className={cn(
-                'relative h-64 w-64 rounded-full border-4 border-amber-400 overflow-hidden transition-transform duration-[4000ms] ease-[cubic-bezier(.1,.6,.3,1)]',
-                'shadow-[0_0_30px_rgba(252,211,77,0.6)]',
-                'animate-[spin_4s_cubic-bezier(.1,.6,.3,1)_forwards]'
+                'relative h-64 w-64 rounded-full border-4 border-amber-400 overflow-hidden',
+                isSpinning &&
+                  'animate-[spin_4s_cubic-bezier(.1,.6,.3,1)_forwards] shadow-[0_0_30px_rgba(252,211,77,0.6)]',
+                showResult &&
+                  'animate-in fade-in-50 duration-500'
               )}
               style={
                 {
@@ -151,46 +153,54 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 } as React.CSSProperties
               }
             >
-              {prizes.map((prize, i) => {
-                const angle = 360 / prizes.length;
-                const rotation = angle * i;
-                const textRotation = -90 + angle / 2;
+              {isSpinning ? (
+                <>
+                  {prizes.map((prize, i) => {
+                    const angle = 360 / prizes.length;
+                    const rotation = angle * i;
+                    const textRotation = -90 + angle / 2;
 
-                return (
-                  <div
-                    key={i}
-                    className="absolute left-0 top-0 h-full w-full"
-                    style={{ transform: `rotate(${rotation}deg)` }}
-                  >
-                    <div
-                      className={cn(
-                        'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-2 text-center text-xs font-bold',
-                        prize.color,
-                        'border-r border-amber-400/50'
-                      )}
-                      style={{
-                        clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
-                        transform: 'translateX(-50%)',
-                      }}
-                    >
-                      <span
-                        style={{ transform: `rotate(${textRotation}deg)` }}
-                        className="inline-block whitespace-nowrap"
+                    return (
+                      <div
+                        key={i}
+                        className="absolute left-0 top-0 h-full w-full"
+                        style={{ transform: `rotate(${rotation}deg)` }}
                       >
-                        {prize.text}
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
-              <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full border-4 border-amber-400 bg-[#1a1338] shadow-inner" />
+                        <div
+                          className={cn(
+                            'absolute left-1/2 top-0 flex h-1/2 w-1/2 origin-bottom-left items-start justify-center pt-2 text-center text-xs font-bold',
+                            prize.color,
+                            'border-r border-amber-400/50'
+                          )}
+                          style={{
+                            clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
+                            transform: 'translateX(-50%)',
+                          }}
+                        >
+                          <span
+                            style={{ transform: `rotate(${textRotation}deg)` }}
+                            className="inline-block whitespace-nowrap"
+                          >
+                            {prize.text}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                  <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full border-4 border-amber-400 bg-[#1a1338] shadow-inner" />
+                </>
+              ) : (
+                <div className="flex h-full w-full flex-col items-center justify-center p-4 text-center">
+                  <TicketPercent className="mx-auto h-12 w-12 text-green-400" />
+                  <p className="mt-2 text-lg font-bold text-white">
+                    🎉 Parabéns! Você conseguiu o desconto máximo de 72%!
+                  </p>
+                  <p className="mt-1 text-sm text-white/80">
+                    Sua sorte garantiu o melhor preço disponível hoje.
+                  </p>
+                </div>
+              )}
             </div>
-          )}
-
-          {showResult && (
-             <div className="animate-in fade-in-50 duration-500 text-center">
-               <TicketPercent className="mx-auto h-16 w-16 text-green-400 sm:h-20 sm:w-20" />
-             </div>
           )}
         </div>
 
