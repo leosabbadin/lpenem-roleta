@@ -20,14 +20,14 @@ type RoulettePopupProps = {
 };
 
 const prizes = [
-  { text: '10% OFF', color: 'bg-purple-700' },
-  { text: 'Tente de Novo', color: 'bg-purple-800' },
-  { text: '30% OFF', color: 'bg-purple-700' },
-  { text: 'Mentoria', color: 'bg-purple-800' },
-  { text: '50% OFF', color: 'bg-purple-700' },
-  { text: '72% OFF', color: 'bg-purple-800' }, // This will be the winning prize
-  { text: '20% OFF', color: 'bg-purple-700' },
-  { text: 'E-book Grátis', color: 'bg-purple-800' },
+  { color: 'bg-purple-700' },
+  { color: 'bg-purple-800' },
+  { color: 'bg-purple-700' },
+  { color: 'bg-purple-800' },
+  { color: 'bg-purple-700' },
+  { color: 'bg-purple-800' },
+  { color: 'bg-purple-700' },
+  { color: 'bg-purple-800' },
 ];
 
 const WINNING_INDEX = 5; // Index of '72% OFF'
@@ -88,14 +88,12 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
       <DialogContent className="max-w-md border-primary/50 bg-[#1a1338] text-white">
         <DialogHeader>
           <DialogTitle className="text-center font-headline text-2xl text-amber-300">
-            {showResult
-              ? 'Desconto Desbloqueado!'
-              : 'Gire a Roleta da Sorte!'}
+            {showResult ? 'Desconto Desbloqueado!' : 'Sua Chance é Agora!'}
           </DialogTitle>
           <DialogDescription className="text-center text-white/80">
             {showResult
               ? 'A sorte estava do seu lado! Veja o que você ganhou:'
-              : 'Você está a um giro de desbloquear um desconto exclusivo.'}
+              : 'Clique no botão para travar seu desconto final.'}
           </DialogDescription>
         </DialogHeader>
 
