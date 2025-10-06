@@ -1,4 +1,4 @@
-
+import Script from 'next/script';
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
@@ -33,6 +33,14 @@ export default function RootLayout({
         {children}
         <WhatsAppButton />
         <Toaster />
+
+        {/* Script da Utmify adicionado */}
+        <Script
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          strategy="afterInteractive"
+          data-utmify-prevent-xcod-sck
+          data-utmify-prevent-subids
+        />
       </body>
     </html>
   );
