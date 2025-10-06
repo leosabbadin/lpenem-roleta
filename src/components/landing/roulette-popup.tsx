@@ -183,7 +183,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             <div className="relative h-64 w-64 rounded-full border-4 border-green-400 bg-green-900/20 flex flex-col items-center justify-center p-4 text-center shadow-[0_0_30px_rgba(74,222,128,0.6)]">
               <TicketPercent className="mx-auto h-12 w-12 text-green-400" />
               <p className="mt-2 text-sm font-bold text-white">
-                🎉 Uau, que sorte! Você conseguiu um desconto espetacular de
+                🏆 Uau, que sorte! Você conseguiu um desconto espetacular de
                 72%!
               </p>
             </div>
