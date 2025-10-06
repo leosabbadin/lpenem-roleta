@@ -132,7 +132,6 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 {prizes.map((prize, i) => {
                   const angle = 360 / prizes.length;
                   const rotation = angle * i;
-                  const textRotation = -90 + angle / 2;
 
                   return (
                     <div
@@ -151,12 +150,6 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                           transform: 'translateX(-50%)',
                         }}
                       >
-                         <span
-                          style={{ transform: `rotate(${textRotation}deg)` }}
-                          className="inline-block whitespace-nowrap"
-                        >
-                          {prize.text}
-                        </span>
                       </div>
                     </div>
                   );
