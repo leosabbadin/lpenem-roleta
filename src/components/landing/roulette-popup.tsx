@@ -125,15 +125,6 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                       transform: 'translateX(-50%)',
                     }}
                   >
-                    <span
-                      className="block transform-gpu font-bold text-white"
-                      style={{
-                        transform: `translateY(8px) rotate(${angle / 2}deg)`,
-                        textShadow: '0 1px 2px rgba(0,0,0,0.5)',
-                      }}
-                    >
-                      {prize.text}
-                    </span>
                   </div>
                 </div>
               );
