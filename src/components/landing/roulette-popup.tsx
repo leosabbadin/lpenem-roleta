@@ -96,7 +96,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
             style={
               {
                 // Custom property for the animation end state. 360 * 10 rounds + final position
-                '--final-rotation': `${360 * 10 - 360 / prizes.length * WINNING_INDEX - 360 / prizes.length / 2}deg`,
+                '--final-rotation': `${360 * 10 - (360 / prizes.length) * WINNING_INDEX - 360 / prizes.length / 2}deg`,
               } as React.CSSProperties
             }
           >
@@ -121,11 +121,9 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                     }}
                   >
                     <span
-                      className="block text-sm font-bold text-white -rotate-90"
+                      className="block -rotate-90 transform-gpu text-sm font-bold text-white"
                       style={{
-                        transform: `rotate(${angle / 2}deg) translate(-50%, -10px) rotate(-${angle/2}deg)`,
-                        width: '100px',
-                        left: '50%'
+                        transform: `rotate(${angle / 2}deg) translate(0, 20px)`,
                       }}
                     >
                       {prize.text}
@@ -134,7 +132,7 @@ export function RoulettePopup({ open, onOpenChange }: RoulettePopupProps) {
                 </div>
               );
             })}
-             <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full border-4 border-amber-400 bg-[#1a1338] shadow-inner" />
+            <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 h-16 w-16 rounded-full border-4 border-amber-400 bg-[#1a1338] shadow-inner" />
           </div>
         </div>
 
