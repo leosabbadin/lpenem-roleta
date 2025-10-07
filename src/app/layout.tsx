@@ -40,6 +40,24 @@ export default function RootLayout({
           <MetaPixelEvents />
         </Suspense>
 
+        {/* ================================================================== */}
+        {/* ======================= SCRIPTS DE TERCEIROS ======================= */}
+        {/* ================================================================== */}
+
+        {/* Script do Hotjar adicionado */}
+        <Script id="hotjar-script" strategy="afterInteractive">
+          {`
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:6446184,hjsv:6}; // ✅ SEU ID FOI INSERIDO AQUI
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+          `}
+        </Script>
+
         {/* Script da Utmify adicionado */}
         <Script
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
@@ -48,6 +66,7 @@ export default function RootLayout({
           data-utmify-prevent-subids
         />
 
+        {/* Script do Meta Pixel */}
         <Script id="meta-pixel-base" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
